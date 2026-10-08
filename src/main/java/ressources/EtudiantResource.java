@@ -1,6 +1,7 @@
 package ressources;
 
 import entities.Etudiant;
+import entities.EtudiantList;
 import entities.Option;
 import metiers.EtudiantBusiness;
 
@@ -31,8 +32,7 @@ public class EtudiantResource {
         if (option == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        List<Etudiant> list = business.getEtudiantsByOption(option);
-        return Response.ok(new GenericEntity<List<Etudiant>>(list) {}).build();
+        return Response.ok(new EtudiantList(business.getEtudiantsByOption(option))).build();
     }
 
     // B3: GET /etudiants/I003
